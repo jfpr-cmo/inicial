@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Análise de petição inicial - Benefício por incapacidade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <!--<link href="assets/css/bootstrap.css" rel="stylesheet">-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/chosen.css">--> <!-- CHOSEN, dropdown -->
+    <link rel="stylesheet" type="text/css" href="assets/chosen_v1.1.0/chosen.css">
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-editable.css">-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-editable-v1.1.4/bootstrap-editable/css/bootstrap-editable.css">
+    <!-- editor de textos -->
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-wysihtml5-0.0.2.css"></link>-->
+    <link rel="stylesheet" type="text/css" href="assets/wysihtml5-image-upload-master/js/bootstrap-wysihtml5-0.0.2.js"></link>
+    <style type="text/css">
+      body {
+        padding-top: 70px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 40px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+      /* Sidenav for Docs
+      -------------------------------------------------- */
+
+      .bs-docs-sidenav {
+        margin: 30px 0 0;
+        padding: 0;
+        background-color: #fff;
+        -webkit-border-radius: 6px;
+           -moz-border-radius: 6px;
+                border-radius: 6px;
+        -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+           -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+                box-shadow: 0 1px 4px rgba(0,0,0,.065);
+      }
+      .bs-docs-sidenav > li > a {
+        display: block;
+        width: 190px \9;
+        margin: 0 0 -1px;
+        padding: 8px 14px;
+        border: 1px solid #e5e5e5;
+      }
+      .bs-docs-sidenav > li:first-child > a {
+        -webkit-border-radius: 6px 6px 0 0;
+           -moz-border-radius: 6px 6px 0 0;
+                border-radius: 6px 6px 0 0;
+      }
+      .bs-docs-sidenav > li:last-child > a {
+        -webkit-border-radius: 0 0 6px 6px;
+           -moz-border-radius: 0 0 6px 6px;
+                border-radius: 0 0 6px 6px;
+      }
+      .bs-docs-sidenav > .active > a {
+        position: relative;
+        z-index: 2;
+        padding: 9px 15px;
+        border: 0;
+        text-shadow: 0 1px 0 rgba(0,0,0,.15);
+        -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+           -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+                box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+      }
+      /* Chevrons */
+      .bs-docs-sidenav .icon-chevron-right {
+        float: right;
+        margin-top: 2px;
+        margin-right: -6px;
+        opacity: .25;
+      }
+      .bs-docs-sidenav > li > a:hover {
+        background-color: #f5f5f5;
+      }
+      .bs-docs-sidenav a:hover .icon-chevron-right {
+        opacity: .5;
+      }
+      .bs-docs-sidenav .active .icon-chevron-right,
+      .bs-docs-sidenav .active a:hover .icon-chevron-right {
+        background-image: url(../img/glyphicons-halflings-white.png);
+        opacity: 1;
+      }
+      .bs-docs-sidenav.affix {
+        top: 40px;
+        margin-top: 30px !important;
+      }
+      .bs-docs-sidenav.affix-bottom {
+        position: absolute;
+        top: auto;
+        bottom: 270px;
+      }
+      /* Fim do sidenav */
+
+      .nav-tabs input {margin-top: -4px}
+
+      /* FELIPE: Override do modal */
+
+      .modal_big.modal {
+        margin: auto;
+        bottom: 30px;
+        left: 30px;
+        right: 30px;
+        top: 30px !important;
+        width: auto;
+
+      }
+
+      .modal_big .modal-footer {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+      }
+
+      .modal_big .modal-body {
+        max-height: none;
+      }
+
+      .prejudiciais > div {
+        margin-bottom: 10px;
+        display: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+
+    </style>
+    <!--<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="100">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Análise de petição inicial- Benefício por Incapacidade</a>
+          <!-- <ul class="nav pull-right">
+            <li><a href="#"> </a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Navegação <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html">Tela de apresentação</a></li>
+                <li class="divider"></li>
+                <li><a href="analise_inicial_v0.2.html"><span class="label label-info">Previdenciário</span> Análise de Inicial</a></li>
+                <li><a href="requisicao_perito_simples.html"><span class="label label-info">Previdenciário</span> Requisição do Perito</a></li>
+                <li><a href="resposta_perito.html"><span class="label label-info">Previdenciário</span> Resposta do Perito</a></li>
+                <li><a href="editor.html"><span class="label label-info">Previdenciário</span> Editor de Minuta Inteligente</a></li>
+                <li class="divider"></li>
+                <li><a href="execucao_fiscal_cumprimento_mandado.html"><span class="label label-warning">Ex. Fiscal</span> Cumprimento de mandado</a></li>
+                <li><a href="execucao_fiscal_raio_x.html"><span class="label label-warning">Ex. Fiscal</span> Raio X</a></li>
+                <li><a href="execucao_fiscal_modulo_leilao.html"><span class="label label-warning">Ex. Fiscal</span> Gerenciador de Leilões</a></li>
+                <li class="divider"></li>
+                <li><a href="selecione_localizador.html"><span class="label label-success">Usabilidade</span> Seleção de localizador</a></li>
+<li><a href="usabilidade_movimentacoes_favoritas.html"><span class="label label-success">Usabilidade</span> Movimentações favoritas</a></li>
+              </ul>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="well">
+            <h3>Competência</h3>
+            <form class="form-inline nomargin prejudiciais">
+              <div style="display: block">
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" data-toggle="modal" data-target="#modal_acidente_de_trabalho"><span class="text-error">É acidente de trabalho</span></button>
+                  <button class="btn" onClick="$('#competenciaDeNossaSubsecao').show('slow'); return false;"><span class="text-success">Não é acidente de trabalho</span></button>
+                </div>
+              </div>
+              <div id="competenciaDeNossaSubsecao">
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" onclick="alert('Favor redistribuir o processo para a Subseção competente'); return false;"><span class="text-error">Não é competência de nossa Subseção</span></button>
+                  <button class="btn" onclick="$('#mostraQuandoCompetenciaOk').show('slow'); return false;"><span class="text-success">É competência de nossa Subseção</span></button>
+                </div>
+                <a class="btn" href="http://www5.jfpr.jus.br/institucional/jurisdicao/jurisdicao_pesqcidade.php" target="_blank">Pesquisar</a>
+              </div>
+            </form>
+          </div>
+          <div class="well" id="mostraQuandoCompetenciaOk" style="display: none">
+            <h3>Prevenção <a href="http://www.jfpr.jus.br/" target="_blank" class="btn btn-mini" style="font-weight: normal">Pesquisar na JFPR</a></h3> 
+            <p>Não se esqueça de marcar no e-Proc a prevenção.</p>
+            <form class="form-inline nomargin prejudiciais">
+              <div style="display: block">
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" onclick="$('#haProcessosAnteriores').show('slow'); return false;"><span class="text-error">Há processos anteriores entre as mesmas partes</span></button>
+                  <button class="btn" id="naoHaProcessosAnteriores" onclick="$('#mostraQuandoPreliminaresOk').show('slow'); $('#haProcessosAnteriores').hide('slow');return false;"><span class="text-success">Não há processos anteriores entre as mesmas partes</button>
+                </div>
+              </div>
+              <div id="haProcessosAnteriores">
+                <p>Favor digitar o número / assunto dos processos Previdenciários anteriores:</p>
+                <textarea class="input-block-level" id="processos_anteriores" placeholder="Exemplo: Autos 5001234564047003 - Auxílio-doença" style="margin-bottom: 10px" autocomplete="off"></textarea>
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" onclick="$('#temMesmoObjeto').show('slow'); return false;"><span class="text-error">Tem o mesmo pedido</span></button>
+                  <button class="btn" id="naoTemOMesmoPedido" onclick="$('#mostraQuandoPreliminaresOk').show('slow'); $('#naoTemOMesmoObjeto').show('slow'); return false;"><span class="text-success">Não tem o mesmo pedido</button>
+                </div>
+                <div id="naoTemOMesmoObjeto" style="display: none; margin-top: 10px">
+                  <div class="alert alert-success">
+                    Continue a análise normalmente, será incluído automaticamente um texto no ato final esclarecendo que os processos acima não configuram coisa julgada, litispendência ou prevenção.
+                  </div>
+                </div>
+              </div>
+              <div id="temMesmoObjeto">
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" onclick="alert('Favor redistribuir o processo.'); return false;"><span class="text-error">Necessita redistribuição</span></button>
+                  <button class="btn" onclick="$('#analisaCoisaJulgada').show('slow'); $('.pendenciaJuntarDocumentosAnteriores').show('slow'); return false;"><span class="text-success">Não necessita de redistribuição</button>
+                </div>
+                <button class="btn" data-toggle="modal" data-target="#modal_ajuda_redistribuicao"><i class="icon-question-sign"></i> Ajuda</button>
+              </div>
+              <div id="analisaCoisaJulgada">
+                <div class="btn-group" data-toggle="buttons-radio" >
+                  <button class="btn" onclick="$('#temPossibilidadeCoisaJulgada').show('slow'); $('#mostraQuandoPreliminaresOk').show('slow'); return false;" id="haPossibilidadeDeCoisaJulgada"><span class="text-error">Há possibilidade de coisa julgada</span></button>
+                    <!-- Neste caso incluiria no editor_final  o TEXTO de intimação para falar sobre a coisa julgada, concatenando o texto dos processos digitados no textarea #processos_anteriores -->
+                  <button class="btn" id="naoHaPossibilidadeDeCoisaJulgada" onclick="$('#mostraQuandoPreliminaresOk').show('slow'); return false;"><span class="text-success">Não há possibilidade de coisa julgada</button>
+                </div>
+                <button class="btn" data-toggle="modal" data-target="#modal_ajuda_coisa_julgada"><i class="icon-question-sign"></i> Ajuda</button>
+                <div id="temPossibilidadeCoisaJulgada" style="display: none; margin-top: 10px">
+                  <div class="alert alert-success">
+                    Continue a análise como de praxe, será incluído automaticamente um texto no ato final para a parte autora se manifestar sobre coisa julgada.
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div id="mostraQuandoPreliminaresOk" style="display:none">
+            <div class="well" id="">
+              <form class="form-inline" style="margin: 0" id="requisitos">
+                <h3>Documentos<br><small>Marque aqueles documentos que estão presentes</small></h3>
+                <p>
+                  <label class="checkbox"><input type="checkbox" autocomplete="off" class="analise_checkbox"> Instrumento procuratório </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> RG e CPF </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> Comprovante de residência atualizado </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Em nome de terceiros</button>
+                </p>
+                <p>
+                  <label class="checkbox"  rel="tooltip"  data-original-title="Deve conter menção às 12 vincendas" data-placement="right"><input type="checkbox" autocomplete="off" class="analise_checkbox"> Termo de renúncia </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> Cópia integral da CTPS </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> Cópia do indeferimento administrativo </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> Documentos médicos </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" class="analise_checkbox"> Planilha de cálculos </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off" id="declaracaoPobreza" class="analise_checkbox"> Declaração de hipossuficiência econômica OU pedido na inicial + procuração com poderes específicos </label>
+                  <button data-toggle="button" class="btn btn-mini" type="button" style="margin-top: -5px; padding: 0 6px;" disabled>Ilegível</button>
+                </p>
+              </form>
+            </div>
+
+            <div class="well" id="" style="display: none"> <!-- Oculta por enquanto -->
+              <form id="justicaGratuita" class="" style="margin: 0">
+                <h3>Justiça Gratuita</h3>
+                <label class="radio">
+                  <input type="radio" value="option3" id="optionsRadios1" name="optionsRadios" data-texto="" checked="checked">
+                  Não certificar nada
+                </label>
+                <label class="radio">
+                  <input type="radio"  value="option1" id="optionsRadios1" name="optionsRadios" data-texto="xxx">
+                 Certificar deferimento (apresentou declaração de pobreza OU houve pedido na inicial acompanhado de procuração com poderes expressos)
+                </label>
+                <label class="radio">
+                  <input type="radio" value="option2" id="optionsRadios1" name="optionsRadios" data-texto="Registro que retifiquei na autuação o status da Justiça Gratuita para <strong>não requerida</strong>, ante a inexistência de pedido nesse sentido na exordial.">
+                  Certificar que não foi requerida
+                </label>
+                <style type="text/css">
+                  #texto_ajg_wrapper .cke_contents {
+                  height: 110px !important;
+                  font-size: 12pt !important;  
+                  }
+                  #texto_ajg_wrapper #cke_20_label, #texto_ajg_wrapper #cke_21_label { display: none;}
+
+                  #texto_ajg_wrapper .cke_editable {
+                  font-size: 12pt !important;  
+                  }
+                </style>
+                <div id="texto_ajg_wrapper" style="display: none"><textarea id="texto_ajg"  class="btn-block ckeditor"></textarea></div>
+              </form>
+            </div>
+
+            <form class="form-inline" id="form_memo">
+              <div class="well">
+                <p style="margin: 0">Quem está analisando esta inicial: <br><input type="text" class="input-block-level required" value="" name="quem_analisou_inicial" id="quem_analisou"></p>
+              </div>
+
+              <div class="well">
+                <!-- <p>Concessão ou restabelecimento: <select><option></option><option>Concessão</option><option>Restabelecimento</option></select></p> -->
+                <p><b>Número do Processo</b>: <input type="text" autocomplete="off" name="numero" id="memo_processo" class="required"></p>
+                <p><b>Nome do autor</b>: <input type="text" autocomplete="off" name="nome" id="memo_autor" class="required"></p>
+                <p><b>Especialidade da perícia</b>: <input type="text" autocomplete="off" id="memo_especialidade" class="required"></p>
+                <p><b>APS de</b>: <input type="text" id="memo_aps" autocomplete="off" name="aps" class="required"></p>
+                <p><b>Número do Benefício</b>: <input type="text" autocomplete="off" id="memo_nb" name="nb" class="required"></p>
+                <p>Outras anotações do memo (opcional):</p>
+                <textarea class="input-block-level" style="height: 100px" id="memo_outros"></textarea>
+              </div>
+            </form>
+
+            <div style="margin-top: 30px;" class="well">
+              <button id="gerarAto" class="btn btn-large btn-block btn-danger" type="button">Gerar ato de emenda e memo <i class="icon-arrow-down"></i> </button>
+            </div>
+
+            
+          </div> <!-- mostraQuandoPreliminarOk -->
+          <!-- Começa editor final -->
+          <div id="editor_final" style="display:none">
+            <style type="text/css">
+              .cke_contents {
+              height: 450px !important;
+              }
+            </style>
+            <h3>Texto do ato:</h3>
+            <textarea id="editor_texto_final" rows="6" class="btn-block ckeditor"></textarea>
+            
+            <!--  <button class="btn btn-primary btn-large" id="copiar_ato" data-clipboard-target="#cke_2_contents">Copiar ato</button> -->
+            <h3 style="margin-top: 12px" id="scrollToHere">Texto do memo:</h3>
+            <textarea style="height: 100px; width: 331px;" id="texto_do_memo"></textarea>
+            <div class="caixaDoLembrete" style="display: none">
+              <h3 style="margin-top: 12px">Texto do lembrete:</h3>
+              <textarea style="height: 100px; width: 331px;"></textarea>
+            </div>
+            <div class="well" id="checklistQuandoEmenda" style="margin-top: 30px">
+              <h3 class="text-error">Não se esqueça de:</h3>
+              <form class="form-inline">
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Intimar parte autora  para emenda, 10 dias </label>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Colocar o MEMO </label>
+                </p>
+                <p class="caixaDoLembrete" style="display: none">
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Colocar o Lembrete acima </label>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Mudar o processo p/ localizador pessoal </label>
+                </p>
+                <p id="lembrete_deferir_ajg" style="display: none">
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Mudar status da Justiça Gratuita para DEFERIDA </label>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Colocar LEMBRETE em sendo o caso de vista ao MPF </label>
+                </p>
+                <p class="pendenciaJuntarDocumentosAnteriores" style="display: none">
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Juntar documentos do processo anterior (INICIAL, LAUDO, SENTENÇA e VOTO) </label>
+                </p>
+              </form>
+            </div>
+
+            <div class="well" id="checklistQuandoOk" style="display: none; margin-top: 30px">
+              <h3 class="text-success">Não se esqueça de:</h3>
+              <form class="form-inline">
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Mudar localizador para BI03 - AGENDAR PERÍCIA </label>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Mudar status da Justiça Gratuita para DEFERIDA </label>
+                </p>
+                <p>
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Colocar LEMBRETE em sendo o caso de vista ao MPF </label>
+                </p>
+                <p class="pendenciaJuntarDocumentosAnteriores" style="display: none">
+                  <label class="checkbox" ><input type="checkbox" autocomplete="off"> Juntar documentos do processo anterior (INICIAL, LAUDO, SENTENÇA e VOTO) </label>
+                </p>
+                <p>Salvar na pasta da rede o arquivo para marcação de perícia com o seguinte nome:</p>
+                <input type="text" class="input-block-level" id="nome_do_arquivo">
+              </form>
+            </div>
+          </div> <!-- Editor final -->
+        </div> <!-- span 12 -->
+      </div> <!-- row -->
+    </div> <!-- /container -->
+
+    <!-- Modal de ajuda da redistribuição -->
+
+    <div id="modal_ajuda_redistribuicao" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Quando devemos redistribuir o processo</h3>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Quando houve processo anterior, com o mesmo objeto do presente, que foi extinto sem julgamento do mérito, por outro Juízo. </b></li>
+          <li><b>Atenção:</b> mesmo que seja da mesma VARA, é necessário redistribuir caso o processo anterior seja de outro Juízo</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> Fechar</button>
+      </div>
+    </div>
+
+
+    <!-- Modal ajuda coisa julgada -->
+
+    <div id="modal_ajuda_coisa_julgada" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Coisa julgada</h3>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Apesar de ter o mesmo objeto (pedido), <b>não</b> há coisa julgada quando a parte autora apresenta <b>novo requerimento administrativo</b>, alegando modificação no estado fático (agravamento, doença diversa da anterior, etc), bem como apresentando novos documentos médicos;</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> Fechar</button>
+      </div>
+    </div>    
+
+    <!-- Modal do Acidente de Trabalho -->
+
+    <div id="modal_acidente_de_trabalho" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Procedimento para acidente de trabalho</h3>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Caso se trate de <b>segurado especial</b> (pequeno produtor rural, sem registro em carteira, geralmente trabalha em regime de economia familiar) ou <b>contribuinte individual</b> (autônomo), nao há juridicamente "acidente de trabalho", mesmo que a parte tenha se acidentado durante o trabalho. <b class="text-success">Nestas hipóteses, dar seguimento normal. </b></li>
+          <li>Não sendo uma destas hipóteses, o acidente de trabalho ensejará competência da Justiça Estadual, devendo-se extinguir o processo para remessa àquela Justiça, com base no documento do Gedpro nº XXXX</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> Fechar</button>
+      </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/chosen.jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script src="assets/js/bootstrap-editable.min.js"></script>-->
+    
+    <!--<script src="assets/js/jquery-1.12.4.js"></script>
+    <script src=""></script>
+    <script src="assets/chosen_v1.1.0/chosen.jquery.js"></script>
+    <script src=""></script>
+    <script src="assets/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-button.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src=""></script>
+    <script src=""></script>
+    <script src="assets/bootstrap-editable-v1.1.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>-->
+    
+    <script src="assets/Affix/js/jquery.js"></script>
+  	<script src="assets/Affix/js/bootstrap.min.js"></script>
+    
+
+    <!--<script src="assets/js/jquery-validate.js"></script>-->
+    <script src="assets/js/jquery.validate.js"></script>
+    <!--<script type="text/javascript" src="assets/js/ZeroClipboard.js"></script>-->
+    <script type="text/javascript" src="assets/zeroclipboard-master/dist/ZeroClipboard.js"></script>
+        <script type="text/javascript">
+          $('[rel=chosen]').chosen({search_contains:"true"});
+          // $('[rel=editable]').editable();
+          // $('#data_pericia').editable();
+          $('#teste10').on('hidden', function() {
+            $('#idade').html('29 anos');
+          });
+
+        </script>
+    <script src="assets/ckeditor/ckeditor.js"></script>
+    <script src="assets/js/keymaster.min.js"></script>
+    <script language="JavaScript">
+    // var clip = new ZeroClipboard( $('#copiar_ato') );
+    // Comentada enquanto nao consigo resolver o botão de copiar
+    </script>
+
+    <script>
+    
+    // (Felipe) Marca o botão de ilegível como btn-danger caso active
+    $('.btn-mini').on('click', function() {
+      if ($(this).hasClass('btn-danger')) {
+        $(this).removeClass('btn-danger');
+        verificaRequisitos();
+        $(this).parent().find('label').addClass('text-success');
+      } else {
+        $(this).addClass('btn-danger');
+        verificaRequisitos();
+        $(this).parent().find('label').removeClass('text-success');
+      }
+    });
+
+    // Felipe: text-success para pendências ok
+    // $('.pendencia_ok').on('click', function() {
+    //   $(this).parent().parent().find('span').addClass('text-success')
+    // });
+
+
+$('#texto_ajg').html(sessionStorage.getItem('justicaGratuita'));
+$('#justicaGratuita input[name=optionsRadios]').on('change', verificaAlteracaoJusticaGratuita);
+function verificaAlteracaoJusticaGratuita(e)
+{
+  var valor = false;
+  $('#justicaGratuita input[name=optionsRadios]').each(function(i, input)
+  {
+    if (input.checked) {
+      valor = $(input).attr('data-texto');
+    }
+  });
+  CKEDITOR.instances.texto_ajg.setData(valor);
+  sessionStorage.setItem('justicaGratuita', valor);
+}
+key('ctrl+left', function() { if ($('#atalhosTeclado')[0].checked) $('.carousel').carousel('prev'); });
+key('ctrl+right', function() { if ($('#atalhosTeclado')[0].checked) $('.carousel').carousel('next'); });
+$(window).on('beforeunload', function(e)
+{
+  sessionStorage.setItem('justicaGratuita', CKEDITOR.instances.texto_ajg.getData());
+});
+$('#requisitos input[type=checkbox]').on('change', verificaRequisitos);
+function verificaRequisitos(e)
+{
+  var naoMarcados = 0;
+  $('#requisitos input[type=checkbox]').each(function(i, chk)
+  {
+    // var botao = $(chk).parent().parent().find('button');
+    var botao = $(chk).parent().parent().find('button')[0];
+    if (chk.checked) {
+      botao.disabled = false;
+      $(chk).parent().addClass('text-success');
+      if ( $(chk).parent().parent().find('button').hasClass('btn-danger') ) {
+        naoMarcados++;
+      };
+    } else {
+      naoMarcados++;
+      $(botao).removeClass('active');
+      $(chk).parent().removeClass('text-success');
+      botao.disabled = true;
+    }
+  });
+  var gerarAto = $('#gerarAto');
+  var checklistQuandoOk = $('#checklistQuandoOk');
+  var checklistQuandoEmenda = $('#checklistQuandoEmenda');
+  if (naoMarcados == 0 && ( !$('#haPossibilidadeDeCoisaJulgada').hasClass('active') ) ) {
+    gerarAto.removeClass('btn-danger');
+    gerarAto.addClass('btn-success');
+    checklistQuandoOk.show('slow');
+    checklistQuandoEmenda.hide('slow');
+    gerarAto.html('Analisar Inicial e gerar memo <i class="icon-arrow-down"/>');
+  } else {
+    gerarAto.removeClass('btn-success');
+    gerarAto.addClass('btn-danger');
+    gerarAto.html('Gerar ato de emenda <i class="icon-arrow-down"/>');
+    checklistQuandoOk.hide('slow');
+    checklistQuandoEmenda.show('show');
+  }
+}
+verificaRequisitos();
+$('#gerarAto').on('click', gerarDocumentoAto);
+function gerarDocumentoAto(e)
+{
+  
+  // Felipe: validação dos campos obrigatórios
+  $('#form_memo').validate({
+    submitHandler: function(form) {
+      return false;
+    }
+  });
+  $('#form_memo').submit();
+  if ( !$('#form_memo').valid() ) {
+    alert('Por favor preencha os campos obrigatórios');
+    return false;
+  } else {
+    $('#editor_final').show();
+  };
+
+  // Felipe: texto do memo, nome do arquivo
+  var textoMemo = 'Especialidade ' + $('#memo_especialidade').val() + '\n';
+  textoMemo +=  'APS de ' + $('#memo_aps').val() + '\n';  
+  textoMemo +=  'NB ' + $('#memo_nb').val();
+  if ( $('#memo_outros').val() ) {
+    textoMemo += '\n \n' + $('#memo_outros').val();
+  };
+  $('#texto_do_memo').val(textoMemo);
+  var nomeDoArquivo = $('#memo_especialidade').val() + ' - ' + $('#quem_analisou').val() + ' - ' + $('#memo_processo').val() + ' - ' + $('#memo_autor').val();
+  $('#nome_do_arquivo').val(nomeDoArquivo);
+
+  // Felipe: Prevenção
+
+  if ( $('#naoHaProcessosAnteriores').hasClass('active') ) {
+    var prevencao = '<b>não</b> tendo encontrado processos anteriormente ajuizados entre as mesmas partes no âmbito da Seção Judiciária do Paraná. ';
+
+  } else {
+    $('.pendenciaJuntarDocumentosAnteriores').show();
+    $('.caixaDoLembrete').show();
+    // Texto do lmbrete
+    var textoDoLembrete = 'Atenção, teve processos anteriores: ' + $('#processos_anteriores').val();
+    $('.caixaDoLembrete').find('textarea').val(textoDoLembrete);
+    // Fim do texto do lembrete
+    var prevencao = 'tendo encontrado o(s) seguinte(s) processo(s) anteriormente ajuizado(s) entre as mesmas partes:</p>\n';
+    prevencao += '<p style="font-weight: bold">- <i>' + $('#processos_anteriores').val() + '</i></p>\n';
+    if ( $('#naoTemOMesmoPedido').hasClass('active') || $('#naoHaPossibilidadeDeCoisaJulgada').hasClass('active') )  {
+      prevencao += '<p>Não obstante, após proceder à análise do(s) processo(s) acima, constatei, s.m.j., a <b>inocorrência</b> dos fenômenos processuais referidos anteriormente (coisa julgada, litispendência ou prevenção).'
+    } else {
+      var intimacaoFalarCoisaJulgada = 'Manifeste-se acerca da possibilidade de coisa julgada deste feito em relação ao(s) processo(s) elencado(s) na certidão acima.'
+    };
+  };
+
+  // 
+  
+  var valores = {};
+  var ajg = CKEDITOR.instances.texto_ajg.getData().replace(/<\/?p>/g, ' ');
+  if (! /^ *$/.test(ajg)) {
+    valores.ajg = ajg;
+  }
+  var requisitos = $('#requisitos p'), requisitosAusentes = 0;
+  $.each(['procuracao', 'rg', 'residencia', 'renuncia', 'ctps', 'indeferimento', 'medicos', 'planilha', 'pobreza'], function(r, requisito) {
+    valores[requisito] = Requisito.fromParagrafo(requisitos[r]);
+    if (valores[requisito].presente == false || valores[requisito].ilegivel == true) {
+      requisitosAusentes++;
+    }
+  });
+  var sTexto = '<html lang="pt-BR" dir="ltr">\n';
+  sTexto += '  <head>\n';
+  sTexto += '  <style type="text/css">\n';
+  sTexto += 'body { counter-reset: lista1; }\n';
+  sTexto += '.header { font-family: Calibri, Helvetica, sans-serif; font-size: 9pt; text-indent: 0; line-height: 1.5em }\n';
+  sTexto += '.dados { font-family: Times; font-size: 13pt; font-weight: bold;  text-indent: 0}\n';
+  sTexto += '.title { font-family: Times; font-size: 14pt; font-weight: bold; text-indent: 0 }\n';
+  sTexto += '.text { font-family: Times; font-size: 13pt; }\n';
+  sTexto += '.signature { font-family: Times; font-size: 12pt; font-weight: bold; font-style: italic; text-indent: 0}\n';
+  sTexto += '.lista1 { font-family: Times; font-size: 13pt; font-weight: bold; text-decoration: underline; counter-reset: lista2; margin-left: 1cm; text-indent: 0 }\n';
+  sTexto += '.lista1:before { content: counter(lista1) ") "; counter-increment: lista1; text-indent: 0}\n';
+  sTexto += '.lista2 { font-family: Times; font-size: 13pt; margin-left: 1cm; text-indent: 0}\n';
+  // sTexto += '.lista2:before { content: counter(lista2, lower-latin) ". "; counter-increment: lista2; font-weight: bold;text-indent: 0 }\n';
+  sTexto += '  </style>\n';
+  sTexto += '  </head>\n';
+  sTexto += '  <body bgcolor="white">\n';
+  sTexto += '  <p class="header" align="center"><img width="85" height="86" src="http://eproc.jfpr.jus.br/eprocV2/imagens/brasao_pb.jpg" alt="Brasão da República"><br/>';
+  sTexto += 'PODER JUDICIÁRIO<br/>';
+  sTexto += '&nbsp;<strong>JUSTIÇA FEDERAL</strong>&nbsp;<br/>';
+  sTexto += 'SEÇÃO JUDICIÁRIA DO PARANÁ<br/>';
+  sTexto += 'Subseção Judiciária de Maringá<br/>';
+  sTexto += '6ª Vara Federal de Maringá</p>\n';
+  sTexto += '  <p class="title" align="center">CERTIDÃO</p>\n';
+  sTexto += '  <p class="text" align="justify">Nos termos da Portaria 03/2006 desta Vara, efetuei a análise prévia da petição inicial e dos documentos encartados.</p>\n';
+  if ( $('#declaracaoPobreza').is(":checked") ) {
+    $('#lembrete_deferir_ajg').show();
+    sTexto += '  <p class="text" align="justify"> Com fulcro no art. 7º da Portaria já referida, ficam <b>deferidos, por ora</b>, independentemente de despacho e intimação, os benefícios da <b>Justiça Gratuita</b>, ante o preenchimento dos requisitos legais.</p>\n';
+  };
+  sTexto += '  <p class="text" align="justify">A fim de verificar eventual prevenção, litispendência ou coisa julgada, certifico que procedi à consulta do sistema e-Proc e SIAPRO (físico), '; // Esta linha abre o parágrafo da prevenção
+  sTexto += prevencao; // Esta linha inclui o texto da prevenção
+  sTexto += '</p> \n'; // Esta linha fecha o parágrafo da prevenção
+
+  // Felipe: deprequei por enquanto este código pois AJG está ligado ao requisito "declaração de pobreza (pobreza)"
+  // if ('ajg' in valores) {
+  //   sTexto += '  <p class="text" align="justify">' + valores.ajg + '</p>\n';
+  // }
+  if (requisitosAusentes == 0 && ( !$('#haPossibilidadeDeCoisaJulgada').hasClass('active') ) ) {
+    sTexto += '  <p class="text" align="justify">Por fim, certifico que os autos encontram-se aptos para a designação de perícia médica.</p>\n';
+    $('#prazo').hide();
+    $('#localizador').show();
+    $('#intimar').removeClass('btn-danger').addClass('btn-success');
+    $('#intimar').html('Gerar movimentação <i class="icon-arrow-right"/>');
+  } else {
+    $('#prazo').show();
+    $('#localizador').hide();
+    $('#intimar').removeClass('btn-success').addClass('btn-danger');
+    $('#intimar').html('Intimar p/ emenda <i class="icon-arrow-right"/>');
+    sTexto += '  <p class="title" align="center">ATO DE SECRETARIA</p>\n';
+    sTexto += '  <p class="text" align="justify">Por oportuno, encaminho estes autos para <strong>INTIMAÇÃO</strong> da parte autora, pelo prazo de <strong> 10 dias</strong>, a fim de juntar os documentos necessários à instrução processual e/ou esclarecer divergências ou omissões, conforme abaixo relacionado:</p>\n';
+    // sTexto += '  <p class="lista1" align="justify">Apresentar:</p>\n';
+    sTexto += valores.procuracao.toTexto('Apresentar instrumento procuratório com os poderes para o foro judicial', ', <b>tendo em vista que aquele juntado aos autos está <u>ilegível</u></b>', ';');
+    sTexto += valores.rg.toTexto('Apresentar cópias dos documentos pessoais da parte autora (RG e CPF)', ', <b>tendo em vista que aquelas juntadas aos autos estão ilegíveis</b>', ';');
+    sTexto += valores.residencia.toTexto('Apresentar comprovante de residência atualizado (emitido há no máximo um ano, como contas de água, luz ou telefone) e em nome da parte autora', ' (o comprovante juntado está no nome de pessoa estranha aos autos)', ', para fins de verificação da competência territorial, a qual é absoluta no âmbito dos Juizados Federais (art. 3º, §3º da Lei 10.259/01). Na hipótese de apresentação de comprovante em nome de terceiro, deve a parte comprovar qual o vínculo com o titular, apresentando documentos, por exemplo: certidão de nascimento, casamento, contrato de locação, ou ainda, sendo o caso, declaração do companheiro(a) ou do titular do comprovante.;');
+    sTexto += valores.renuncia.toTexto('Apresentar termo de renúncia, com a menção expressa à <em>“renúncia das parcelas vencidas, que <u>somadas as 12 parcelas vincendas</u>, excederem a 60 salários mínimos”</em>, assinado devidamente pelo(a) autor(a), conforme art. 260 do CPC e Determinação expressa n.º 01/2007 desta Vara', ', tendo em vista que aquele juntado aos autos está ilegível', ';');
+    sTexto += valores.ctps.toTexto('Apresentar cópia INTEGRAL da CTPS ou das guias de contribuições (acompanhadas do comprovante de pagamento) com o fito de comprovar a qualidade de segurado e carência, quando for o caso', ', tendo em vista que aquela juntada aos autos está ilegível', ';');
+    sTexto += valores.indeferimento.toTexto('Apresentar cópia do indeferimento administrativo', ', tendo em vista que aquela juntada aos autos está ilegível', ';');
+    sTexto += valores.medicos.toTexto('Apresentar documentos médicos que possam comprovar a alegação da enfermidade da autora, tais como: laudos, atestados, exames, prontuários, fichas de atendimento médico ou internação, guias de encaminhamento médico, perícias', ', tendo em vista que aqueles juntados aos autos estão ilegíveis', ';');
+    sTexto += valores.planilha.toTexto('Apresentar demonstrativo pormenorizado e atualizado do valor da causa (planilha), para verificação da competência para julgamento pelo JEF, computando-se além das parcelas vencidas as doze vincendas (art. 260 do CPC), retificando o valor já atribuído, caso necessário', ', tendo em vista que aquele juntado aos autos está ilegível', ';');
+    sTexto += valores.pobreza.toTexto('No tocante aos benefícios da JUSTIÇA GRATUITA, informamos, que para o deferimento conforme requerido na Petição Inicial, nos termos das Leis 1.060/50 e 7115/83, deverá o autor apresentar Declaração de Hipossuficiência econômica, firmada pela parte ou pelo representante legal com poderes específicos.', ', tendo em vista que aquele juntado aos autos está ilegível', ';');
+    if (!(typeof intimacaoFalarCoisaJulgada === 'undefined')) {
+      sTexto += '<p class="lista2">- ' + intimacaoFalarCoisaJulgada +'</p>\n';
+    }
+
+  };
+  // sTexto += '  <p class="text" align="justify">&nbsp;</p>\n';
+  sTexto += '  <p class="signature" align="center">' + $('#quem_analisou').val() +'<br>documento assinado eletronicamente</p>\n';
+  sTexto += '</body>\n';
+  sTexto += '</html>\n';
+  CKEDITOR.instances.editor_texto_final.setData(sTexto);
+
+  $('html, body').animate({
+           scrollTop: $("#scrollToHere").offset().top -800
+       }, 500);
+
+
+}
+function Requisito(presente, ilegivel)
+{
+  this.presente = presente;
+  this.ilegivel = ilegivel;
+}
+Requisito.prototype = {
+  presente: false,
+  ilegivel: false,
+  toTexto: function(inicioSeAusenteOuIlegivel, textoSeIlegivel, fimSeAusenteOuIlegivel)
+  {
+    var texto = '';
+    if (! this.presente || this.ilegivel) {
+      texto += '  <p class="lista2" align="justify">- ';
+      texto += inicioSeAusenteOuIlegivel;
+      if (this.ilegivel) {
+        texto += textoSeIlegivel;
+      }
+      texto += fimSeAusenteOuIlegivel;
+      texto += '</p>\n';
+    }
+    return texto;
+  }
+};
+Requisito.fromParagrafo = function(p)
+{
+  var requisito = new Requisito(false, false);
+  if ($(p).find('input')[0].checked) {
+    requisito.presente = true;
+  }
+  if ($(p).find('button').hasClass('active')) {
+    requisito.ilegivel = true;
+  }
+  return requisito;
+};
+$('#dias').on('change', function(e)
+{
+  gerarDocumentoAto();
+});
+$('.carousel').carousel({interval: false});
+</script>
+  </body>
+</html>
+
+
